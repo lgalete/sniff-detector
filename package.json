@@ -1,20 +1,22 @@
 {
     "name": "sniff-detector",
+    "description": "A project that sniffs out slackers in Slack",
     "version": "0.1.0",
+    "author": "Chatot",
+    "license": "MIT",
     "keywords": [
         "slack",
         "bot",
         "sniff",
         "detector"
     ],
-    "author": "Chatot",
-    "license": "MIT",
-    "description": "A project that detects whenever someone is sniffing in Slack",
     "main": "./src/index.js",
     "scripts": {
-        "start": "node ./src/index.js"
+        "start": "tsx ./src/index.ts"
     },
     "dependencies": {
-        "puppeteer": "^22.9.0"
+        "@curseduca/csdc-script": "^3.2.2",
+        "puppeteer": "^22.9.0",
+        "tsx": "^4.10.3"
     }
 }
