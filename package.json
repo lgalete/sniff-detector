@@ -1,0 +1,20 @@
+{
+    "name": "sniff-detector",
+    "version": "0.1.0",
+    "keywords": [
+        "slack",
+        "bot",
+        "sniff",
+        "detector"
+    ],
+    "author": "Chatot",
+    "license": "MIT",
+    "description": "A project that detects whenever someone is sniffing in Slack",
+    "main": "./src/index.js",
+    "scripts": {
+        "start": "node ./src/index.js"
+    },
+    "dependencies": {
+        "puppeteer": "^22.9.0"
+    }
+}
