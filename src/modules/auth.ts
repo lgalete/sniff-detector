@@ -37,15 +37,18 @@ export async function authenticate(): Promise<Credentials> {
 
     const credentials = {
         cookies,
-        cookieString: cookies.map(({ name, value }) => `${name}=${value}`).join('; '),
+        cookieString: cookies
+            .map(({ name, value }) => `${name}=${value}`)
+            .join('; ')
     };
 
     await browser.close();
 
     await IO.write('./data/cache/credentials.json', credentials);
 
-    Utils.log.success(`Successfully authenticated in ${config.workspace}'s workspace`);
+    Utils.log.success(
+        `Successfully authenticated in ${config.workspace}'s workspace`
+    );
 
     return credentials;
 }
-
