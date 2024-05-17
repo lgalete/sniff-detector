@@ -70,7 +70,7 @@ async function main() {
             }
         }
 
-        await Utils.delay(5000);
+        await Utils.delay(3000);
     }
 }
 
