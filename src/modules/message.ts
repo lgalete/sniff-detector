@@ -15,4 +15,9 @@ export async function sendSlackMessage(
     await Utils.delay(500);
 
     await page.keyboard.press('Enter');
+    await Utils.delay(500);
+
+    await page.click(
+        `.p-channel_sidebar__channel[data-qa-channel-sidebar-is-you="true"]`
+    );
 }
