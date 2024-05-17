@@ -5,5 +5,4 @@ export type Config = {
     password: string;
     workspace: string;
     usersToSniff: Array<User>;
-}
-
+};
