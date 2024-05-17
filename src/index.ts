@@ -1,8 +1,12 @@
 import { Utils } from '@curseduca/csdc-script';
 import { config } from 'config';
-import { authenticate, checkUserStatus } from '@/modules';
 import { getBrowser } from '@/utils';
 import { UserStatus } from '@/types';
+import { 
+    authenticate,
+    checkUserStatus,
+    sendSlackMessage,
+} from '@/modules';
 
 const WORKSPACE_URL = `https://${config.workspace}.slack.com`;
 
@@ -29,6 +33,8 @@ async function main() {
     await page.click(`.p-channel_sidebar__channel[data-qa-channel-sidebar-is-you="true"]`)
 
     const previousStatusMap: Map<string, UserStatus> = new Map();
+
+    Utils.log.info('Sniffing for changes');
     
     while (true) {
         for (const user of config.usersToSniff) {
@@ -50,6 +56,17 @@ async function main() {
             if (previousStatus !== currentUserStatus) {
                 Utils.log.info(`User "${user.name}" changed status from ${previousStatus} to ${currentUserStatus}`);
                 previousStatusMap.set(user.id, currentUserStatus);
+
+                switch (currentUserStatus) {
+                    case UserStatus.Away: {
+                        await sendSlackMessage(page, user.id, ':snif:');
+                        break;
+                    }
+                    case UserStatus.Active: {
+                        await sendSlackMessage(page, user.id, ':reverse_snif:');
+                        break;
+                    }
+                }
             }
         }
 
