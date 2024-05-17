@@ -29,7 +29,7 @@ export async function authenticate(): Promise<Credentials> {
     await Utils.delay(1000);
 
     await page.click('#signin_btn');
-    await page.waitForNavigation({ waitUntil: 'networkidle0' });
+    await Utils.delay(10000);
 
     const finalCookies = await page.cookies();
 
