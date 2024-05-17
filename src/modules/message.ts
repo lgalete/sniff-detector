@@ -6,9 +6,8 @@ export async function sendSlackMessage(page: Page, userId: string, text: string)
     await Utils.delay(2000);
 
     await page.type('.ql-editor', text);
-    await Utils.delay(2000);
+    await Utils.delay(500);
 
     await page.keyboard.press('Enter');
-    // await page.click('button[data-qa="texty_send_button]');
 }
 
