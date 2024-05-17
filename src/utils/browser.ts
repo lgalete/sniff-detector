@@ -2,7 +2,7 @@ import puppeteer, { CookieParam } from "puppeteer";
 
 export async function getBrowser(cookies?: Array<CookieParam>) {
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     args: ["--no-sandbox"],
   });
 
